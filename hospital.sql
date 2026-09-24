@@ -2928,5 +2928,46 @@ INSERT INTO internacoes (id, paciente_id, medico_id, hospital_id, data_entrada, 
 (219, 2, 36, 20, '2024-07-25', '2024-08-14', 'Cirurgia Oncológica', 'C387', 1393.82, 'Alta'),
 (220, 293, 19, 13, '2023-07-19', '2023-07-24', 'Crise Hipertensiva', 'B412', 2856.44, 'Alta');
 
-select * from internacoes;	
+select * from internacoes;
 
+select * from medicos;
+
+select nome, salario from medicos where salario >3000;
+
+select nome, estado from pacientes where estado = 'PR';
+
+select nome from hospitais where estado = 'PR' AND tipo = 'público';
+
+select nome, estado from hospitais where estado = 'PR' OR estado = 'SC';
+
+select nome, estado from hospital where not estado = 'PR' and 'SC';
+
+select nome, estado, cidade from hospitais;
+
+select nome, tipo_sanguineo from pacientes;
+
+select nome, preco, controlado from medicamentos;
+
+select nome as 'nome do hospital', capacidade_de_leitos as 'leitos' from hospitais;
+
+select distinct estado from hospitais;
+
+select distinct tipo_sanguineo from pacientes;
+
+select nome, salario from medicos order by salario desc;
+
+select round(avg(salario),2) as salario_medio from medicos;
+
+select round(avg(valor),2) as valor_medio from consultas;
+
+select sum(salario) as folha_salarial from medicos;
+
+SELECT
+    tipo AS "Tipo de Medicamento",
+    COUNT(DISTINCT fabricante) AS "Fabricantes Diferentes",
+    SUM(preco) AS "Soma dos Preços",
+    ROUND(AVG(preco), 2) AS "Média dos Preços"
+FROM medicamentos
+WHERE controlado = 0
+GROUP BY tipo
+ORDER BY AVG(preco) DESC;
