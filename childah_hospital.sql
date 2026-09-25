@@ -2998,3 +2998,6 @@ select avg(salario) from medicos;
 
 select avg(preco) from medicamentos where controlado = 'N';
 
+update medicos set nome = 'Dr. Sérgio Silva' where id = 36;
+
+delete from medicos where id = 3;
